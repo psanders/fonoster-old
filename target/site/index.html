@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="ccrKSRBN9QdnLbhYLioJYZFBgJInYd7SnACUikLXYuY"/>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Product+Sans:400&amp;lang=en-US" rel="stylesheet">
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.1.3/material.green-amber.min.css">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+    <script src="/static/lib/bower_components/js-polyfills/polyfill.min.js"></script>
+    <script src="/static/lib/bower_components/dialog-polyfill/dialog-polyfill.js"></script>
+    <script src="/static/lib/bower_components/material-design-lite/material.min.js"></script>
+    <script src="/static/lib/bower_components/angular/angular.min.js"></script>
+    <script src="/static/lib/bower_components/angular-resource/angular-resource.min.js"></script>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="/static/assets/css/main.css">
+    <link rel="stylesheet" href="/static/assets/fonts/fonts.css">
+    <link rel="stylesheet" href="/static/lib/bower_components/dialog-polyfill/dialog-polyfill.css">
+    <link rel="stylesheet" href="/static/assets/css/landingpage.css">
+    <link rel="icon" type="image/png" href="/static/assets/images/favicon.png" sizes="32x32">
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-71722942-1', 'auto');
+        ga('send', 'pageview');
+
+        angular.module('FIndex', []);
+
+        angular.module('FIndex').controller('IndexCtrl', ['$scope', function ($scope) {
+            var self = this;
+            var dialog = document.querySelector('dialog');
+
+            init();
+
+            self.pricing = function() {
+                showDialog("Need pricing?", "Fonoster is still a private-beta. Pricing will be available once we launch to the general public.");
+            }
+
+            function showDialog (title, content) {
+                dialog.showModal();
+                self.title = title;
+                self.content = content;
+            }
+
+            function init() {
+                self.email = '';
+                self.status = '';
+
+                dialog.querySelector('.close').addEventListener('click', function() {
+                    dialog.close();
+                });
+
+                if (!dialog.showModal) {
+                    dialogPolyfill.registerDialog(dialog);
+                }
+            }
+        }]);
+    </script>
+    <style>
+        [ng-cloak] {
+            display: none;
+        }
+
+        div:focus, input:focus{
+            outline: 0;
+        }
+
+        h3 {
+            font-weight: 200;
+        }
+
+        p {
+            font-size: 15px;
+        }
+
+        h1.logo {
+            color: gray;
+            font-size: 25px;
+            text-transform: none;
+        }
+
+        .pitch-title {
+            color: #fff;
+        }
+
+        .pitch-p {
+            color: #fff;
+            font-size: 16px;
+            font-weight: 100
+        }
+
+        .try-us {
+            background-color: #27ae60;
+            padding: 30px;
+        }
+
+        .try-us-title {
+            color: #fff;
+            text-align: center;
+        }
+
+        .try-us-p {
+            color: #fff;
+            font-size: 16px;
+            font-weight: 100;
+            text-align: center;
+        }
+
+        main {
+            background: none;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .container {
+            background-color: #27ae60;
+            background: url(/static/assets/images/editor.png);
+            background-repeat: no-repeat;
+            justify-content: initial;
+            align-items: center right;
+            background-position: 680px 135px;
+            background-size: 800px;
+            height: 560px;
+        }
+
+        .mdl-button--raised.mdl-button--colored {
+            background: #fff;
+            color: #27ae60;
+        }
+
+        .green {
+            color: #27ae60;
+        }
+
+        .mdl-layout__header-row .mdl-navigation__link {
+            color: gray;
+        }
+
+        .mdl-layout__header-row .mdl-navigation__link.green {
+            color: #27ae60;
+        }
+
+        .mdl-button--raised.mdl-button--colored:hover {
+            background-color:  #DDF0E0;
+        }
+
+        .mdl-layout__header .mdl-layout__drawer-button {
+            color: #BDC2C6;
+        }
+
+        .mdl-mini-footer {
+            color: #424242;
+            background-color: #EEF3F4;
+        }
+
+        .mdl-logo {
+            color: #424242;
+        }
+
+        img.domore {
+            max-width: 100%;
+            height: auto;
+        }
+
+        img.capabilities {
+            max-width: 70%;
+            display: block;
+            margin: auto;
+            margin-top: 10px;
+            height: auto;
+        }
+
+        @media only screen and (min-device-width : 320px) and (max-device-width : 839px) {
+            .container {
+                background-color: #27ae60;
+                background: none;
+                height: auto;
+                text-align: center;
+            }
+
+            img.capabilities {
+                max-width: 70%;
+                display: block;
+                margin: auto;
+                margin-top: 10px;
+                height: auto;
+            }
+        }
+
+        /* Tablet */
+        @media only screen and (min-device-width : 840px) and (max-device-width : 1024px) {
+            .container {
+                background-position: 550px 100px;
+                background-size: 650px;
+                height: auto;
+            }
+        }
+
+        /* Super Screen */
+        @media only screen and (min-device-width : 1200px)  {
+            .container {
+                background-position: 750px 90px;
+                background-size: 950px;
+                height: 460px;
+            }
+        }
+
+        .mdl-layout__content {
+            background-color: #27ae60;
+        }
+
+        .do-more {
+            background-color: #fff;
+            padding: 25px;
+        }
+
+        .move-fast {
+            background-color: #ebeff2;
+            padding: 25px;
+        }
+
+        .try-us {
+            padding: 35px;
+        }
+
+        .move-fast-title {
+            margin-top: 0px;
+        }
+
+        .try-us-title {
+            margin-top: 0px;
+        }
+
+        .smarter-apps {
+            background-color: #fff;
+            padding: 50px;
+            text-align: center;
+        }
+
+        .mdl-button {
+            width: 200px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        h3 {
+            color: gray;
+        }
+    </style>
+
+    <title>Fonoster - Communicate</title>
+</head>
+<body ng-cloak ng-app="FIndex">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--no-desktop-drawer-button" ng-controller="IndexCtrl as ctrl">
+        <header class="mdl-layout__header mdl-layout__header--waterfall mdl-layout__header--transparent">
+            <div class="mdl-layout__header-row">
+                <span class="mdl-layout-title">
+                    <h4 class="mdl-cell--hide-desktop mdl-cell--hide-tablet">Fonoster</h4>
+                    <img class="mdl-cell--hide-phone" height="40" src="/static/assets/images/logo.png"/>
+                </span>
+                <div class="mdl-layout-spacer"></div>
+
+                <nav class="mdl-navigation mdl-cell--hide-tablet mdl-cell--hide-phone">
+                    <a href="" class="mdl-navigation__link mdl-js-button">Home</a>
+                    <a href="" ng-click="ctrl.pricing();return" id="show-dialog" class="mdl-navigation__link mdl-js-button">Pricing</a>
+                    <a href="https://fonoster.com/docs" class="mdl-navigation__link mdl-js-button">Docs</a>
+                    <a href="https://blog.fonoster.com" class="mdl-navigation__link mdl-js-button">Blog</a>
+                    <a href="https://console.fonoster.com/#/login?playground" class="mdl-navigation__link mdl-js-button">Demo</a>
+                    <a href="https://console.fonoster.com" class="mdl-navigation__link mdl-js-button green">Go to console</a>
+                </nav>
+            </div>
+        </header>
+        <div class="mdl-layout__drawer ">
+            <h1 class="logo logo-drawer">
+                <img height="40" src="/static/assets/images/logo.png"/>
+            </h1>
+            <img class="mdl-cell--hide-phone" height="40" src="/static/assets/images/logo.png"/>
+            <nav class="mdl-navigation">
+                <a href="" class="mdl-navigation__link">Home</a>
+                <a ng-click="ctrl.pricing()" class="mdl-navigation__link">Pricing</a>
+                <a href="https://fonoster.com/docs" class="mdl-navigation__link">Docs</a>
+                <a href="https://blog.fonoster.com" class="mdl-navigation__link">Blog</a>
+                <a href="https://console.fonoster.com/#/login?playground" class="mdl-navigation__link">Demo</a>
+                <a href="https://console.fonoster.com" class="mdl-navigation__link">Go to console</a>
+            </nav>
+        </div>
+        <main class="mdl-layout__content" >
+            <div class="mdl-grid container">
+                <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--5-col-desktop mdl-cell--1-offset-desktop">
+                    <h3 class="pitch-title">Easiest way to send interactive voice messages</h3>
+                    <p class="pitch-p">The tools and infrastructure you need to build better voice apps and grow successful businesses</p>
+                    <br/>
+                    <form name="loginform" action="https://console.fonoster.com">
+                        <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                            get started for free
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="do-more">
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--5-col-desktop mdl-cell--1-offset-desktop">
+                        <img class="domore" src="/static/assets/images/domore.png"/>
+                    </div>
+                    <div class="mdl-cell mdl-cell--middle mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--4-col-desktop mdl-cell--1-offset-desktop">
+                        <h3>Do More</h3>
+
+                        <p>Automated calls can be useful for telemarketing, shipping notification, reminders, emergency calls,
+                            games, surveys and much more. Clients love to be informed, Fonoster helps you do exactly that.</p>
+
+                        <!--<a class="green" href="#">LEARN MORE</a>-->
+                    </div>
+                </div>
+            </div>
+
+            <div class="move-fast">
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--middle mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--4-col-desktop mdl-cell--1-offset-desktop mdl-cell--order-2-desktop">
+                        <img class="capabilities" src="/static/assets/images/capabilities.png"/>
+                    </div>
+                    <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--4-col-desktop mdl-cell--1-offset-desktop">
+                        <h3 class="move-fast-title">Move fast</h3>
+
+                        <p>Whether you want to send personalized messages to a single client or notify thousands,
+                            Fonoster gives you the tools to communicate like never before.
+                            With a simplified RESTful API, you will be up and running in minutes.</p>
+
+                        <!--<a class="green" href="#">LEARN MORE</a>-->
+                    </div>
+                </div>
+            </div>
+
+            <div class="smarter-apps">
+                <h3>Build smarter voice applications</h3>
+            </div>
+
+            <div class="try-us">
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--4-col-desktop mdl-cell--4-offset-desktop">
+                        <h3 class="try-us-title">Try us out</h3>
+
+                        <p class="try-us-p">Start building for free</p>
+
+                        <form class="text-center" name="loginform" action="https://console.fonoster.com">
+                            <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                                get started
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="mdl-mini-footer">
+                <div class="mdl-mini-footer__left-section">
+                    <div class="mdl-logo">Fonoster 	&copy; 2016</div>
+                    <ul class="mdl-mini-footer__link-list">
+                        <li><a href="else.html#contact">contact</a></li>
+                        <li><a href="else.html#terms">terms</a></li>
+                        <li><a href="else.html#privacy">privacy & terms</a></li>
+                    </ul>
+                </div>
+                <div class="mdl-mini-footer--right-section">
+                    <button onclick="window.location.href='https://twitter.com/fonoster'" class="mdl-mini-footer--social-btn social-btn social-btn__twitter">
+                        <span class="visuallyhidden">twitter</span>
+                    </button>
+                    <button onclick="window.location.href='https://facebook.com/fonoster'" class="mdl-mini-footer--social-btn social-btn social-btn__facebook">
+                        <span class="visuallyhidden">facebook</span>
+                    </button>
+                    <button onclick="window.location.href='https://www.linkedin.com/company/fonoster'" class="mdl-mini-footer--social-btn social-btn social-btn__linkedin">
+                        <span class="visuallyhidden">google plus</span>
+                    </button>
+                </div>
+            </footer>
+        </main>
+        <dialog class="mdl-dialog">
+            <h4 class="mdl-dialog__title">{{ctrl.title}}</h4>
+            <div class="mdl-dialog__content">
+                <p>{{ctrl.content}}</p>
+            </div>
+            <div class="mdl-dialog__actions">
+                <button type="button" class="mdl-button close">Got it</button>
+            </div>
+        </dialog>
+    </div>
+</body>
+</html>

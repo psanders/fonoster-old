@@ -1,0 +1,18 @@
+<web-app>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/404.html</location>
+	</error-page>
+
+	<display-name>Fonoster Secured Resources</display-name>
+
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Viewpoint Secure URLs</web-resource-name>
+			<url-pattern>/site/*</url-pattern>
+		</web-resource-collection>
+		<user-data-constraint>
+			<transport-guarantee>CONFIDENTIAL</transport-guarantee>
+		</user-data-constraint>
+	</security-constraint>
+</web-app>
