@@ -9,6 +9,7 @@
     <Set name="virtualHosts">
         <Array type="java.lang.String">
             <Item>fonoster.com</Item>
+            <Item>www.fonoster.com</Item> <!-- No yet tested -->
         </Array>
     </Set>
 </Configure>
