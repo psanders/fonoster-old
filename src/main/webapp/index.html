@@ -15,11 +15,18 @@
     <script src="/static/lib/bower_components/angular-resource/angular-resource.min.js"></script>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
     <link rel="stylesheet" href="/static/assets/css/main.css">
     <link rel="stylesheet" href="/static/assets/fonts/fonts.css">
     <link rel="stylesheet" href="/static/lib/bower_components/dialog-polyfill/dialog-polyfill.css">
     <link rel="stylesheet" href="/static/assets/css/landingpage.css">
     <link rel="icon" type="image/png" href="/static/assets/images/favicon.png" sizes="32x32">
+
+    <head>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gist-embed/2.4/gist-embed.min.js"></script>
+    </head>
+
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -94,9 +101,13 @@
             font-weight: 100
         }
 
+        .try-us-title {
+            margin-top: 0px;
+        }
+
         .try-us {
             background-color: #27ae60;
-            padding: 30px;
+            padding: 70px;
         }
 
         .try-us-title {
@@ -169,7 +180,7 @@
         }
 
         img.capabilities {
-            max-width: 70%;
+            max-width: 80%;
             display: block;
             margin: auto;
             margin-top: 10px;
@@ -222,24 +233,16 @@
 
         .move-fast {
             background-color: #ebeff2;
-            padding: 25px;
-        }
-
-        .try-us {
-            padding: 35px;
+            padding: 50px;
         }
 
         .move-fast-title {
             margin-top: 0px;
         }
 
-        .try-us-title {
-            margin-top: 0px;
-        }
-
         .smarter-apps {
             background-color: #fff;
-            padding: 50px;
+            padding: 110px;
             text-align: center;
         }
 
@@ -269,8 +272,8 @@
                 <div class="mdl-layout-spacer"></div>
 
                 <nav class="mdl-navigation mdl-cell--hide-tablet mdl-cell--hide-phone">
-                    <a href="" class="mdl-navigation__link mdl-js-button">Home</a>
-                    <a href="" ng-click="ctrl.pricing();return" id="show-dialog" class="mdl-navigation__link mdl-js-button">Pricing</a>
+                    <a href="#" class="mdl-navigation__link mdl-js-button">Home</a>
+                    <a href="#" ng-click="ctrl.pricing();return" id="show-dialog" class="mdl-navigation__link mdl-js-button">Pricing</a>
                     <a href="https://fonoster.com/docs" class="mdl-navigation__link mdl-js-button">Docs</a>
                     <a href="https://blog.fonoster.com" class="mdl-navigation__link mdl-js-button">Blog</a>
                     <a href="https://console.fonoster.com/#/login?playground" class="mdl-navigation__link mdl-js-button">Demo</a>
@@ -308,23 +311,23 @@
 
             <div class="do-more">
                 <div class="mdl-grid">
-                    <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--5-col-desktop mdl-cell--1-offset-desktop">
+                    <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--6-col-desktop mdl-cell--1-offset-desktop">
                         <img class="domore" src="/static/assets/images/domore.png"/>
                     </div>
-                    <div class="mdl-cell mdl-cell--middle mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--4-col-desktop mdl-cell--1-offset-desktop">
+                    <div class="mdl-cell mdl-cell--middle mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--4-col-desktop ">
                         <h3>Do More</h3>
 
                         <p>Automated calls can be useful for telemarketing, shipping notification, reminders, emergency calls,
                             games, surveys and much more. Clients love to be informed, Fonoster helps you do exactly that.</p>
 
-                        <!--<a class="green" href="#">LEARN MORE</a>-->
+                        <a class="green" style="text-transform: uppercase" href="https://fonoster.com/docs">View docs</a>
                     </div>
                 </div>
             </div>
 
             <div class="move-fast">
                 <div class="mdl-grid">
-                    <div class="mdl-cell mdl-cell--middle mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--4-col-desktop mdl-cell--1-offset-desktop mdl-cell--order-2-desktop">
+                    <div class="mdl-cell mdl-cell--middle mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--5-col-desktop mdl-cell--1-offset-desktop mdl-cell--order-2-desktop">
                         <img class="capabilities" src="/static/assets/images/capabilities.png"/>
                     </div>
                     <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--4-col-desktop mdl-cell--1-offset-desktop">
@@ -334,7 +337,7 @@
                             Fonoster gives you the tools to communicate like never before.
                             With a simplified RESTful API, you will be up and running in minutes.</p>
 
-                        <!--<a class="green" href="#">LEARN MORE</a>-->
+                        <a class="green" style="text-transform: uppercase" href="https://console.fonoster.com/#/login?playground">Try a demo</a>
                     </div>
                 </div>
             </div>
@@ -359,25 +362,80 @@
                 </div>
             </div>
 
-            <footer class="mdl-mini-footer">
-                <div class="mdl-mini-footer__left-section">
-                    <div class="mdl-logo">Fonoster 	&copy; 2016</div>
-                    <ul class="mdl-mini-footer__link-list">
-                        <li><a href="else.html#contact">contact</a></li>
-                        <li><a href="else.html#terms">terms</a></li>
-                        <li><a href="else.html#privacy">privacy & terms</a></li>
-                    </ul>
+            <footer class="mdl-mega-footer">
+                <div class="mdl-mega-footer__middle-section">
+
+                    <div class="mdl-mega-footer__drop-down-section">
+                        <input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
+                        <h1 class="mdl-mega-footer__heading">Company</h1>
+                        <ul class="mdl-mega-footer__link-list">
+                            <!--<li><a href="#">About</a></li>-->
+                            <li><a href="else.html#privacy">Privacy</a></li>
+                            <li><a href="else.html#terms">Terms</a></li>
+                            <li><a href="else.html#contact">Contact</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="mdl-mega-footer__drop-down-section">
+                        <input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
+                        <h1 class="mdl-mega-footer__heading">Resources</h1>
+                        <ul class="mdl-mega-footer__link-list">
+                            <li><a href="https://blog.fonoster.com/2016/11/21/how-to-broadcast-a-voice-message-with-fonoster-voice-api/">Getting Started With Fonoster</a></li>
+                            <li><a href="https://fonoster.com/docs">Docs</a></li>
+                            <li><a href="https://github.com/fonoster/callflow-examples">Examples</a></li>
+                            <li><a href="#" ng-click="ctrl.pricing();return">Pricing</a></li>
+                            <li><a href="https://console.fonoster.com/#/login?playground">Demo</a></li>
+                            <li><a href="https://console.fonoster.com">Console</a></li>
+                            <li><a href="https://github.com/fonoster">Helper Libraries</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="mdl-mega-footer__drop-down-section">
+                        <input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
+                        <h1 class="mdl-mega-footer__heading">Stay Connected</h1>
+                        <ul class="mdl-mega-footer__link-list">
+                            <li><a href="https://blog.fonoster.com">Blog</a></li>
+                            <li><a href="https://facebook.com/fonoster">Facebook</a></li>
+                            <li><a href="https://twitter.com/fonoster">Twitter</a></li>
+                            <li><a href="https://www.linkedin.com/company/fonoster">Linkedin</a></li>
+                            <li><a href="https://github.com/fonoster">Github</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="mdl-mega-footer__drop-down-section">
+                        <h4>Email Newsletter</h4>
+                        <p>Get updates, news, surveys & offers.</p>
+
+                        <style type="text/css">
+                            #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
+                            /* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
+                            We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+                        </style>
+                        <form action="//fonoster.us14.list-manage.com/subscribe/post?u=128404d6884e0be58682f5a6d&amp;id=af0ff5bf29" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                            <div id="mc_embed_signup_scroll" class="mdl-textfield mdl-js-textfield">
+
+                                <!-- TODO: Add email patter -->
+                                <input type="text"  name="EMAIL" class="mdl-textfield__input" id="mce-EMAIL" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" maxlength="100">
+                                <label class="mdl-textfield__label" for="mce-EMAIL">Email address</label>
+                                <span class="mdl-textfield__error">Invalid Email</span>
+
+                                <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                                <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_128404d6884e0be58682f5a6d_af0ff5bf29" tabindex="-1" value=""></div>
+                            </div>
+                        </form>
+                        <button type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" form="mc-embedded-subscribe-form" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+                            <i class="material-icons">send</i>
+                        </button>
+                    </div>
+
                 </div>
-                <div class="mdl-mini-footer--right-section">
-                    <button onclick="window.location.href='https://twitter.com/fonoster'" class="mdl-mini-footer--social-btn social-btn social-btn__twitter">
-                        <span class="visuallyhidden">twitter</span>
-                    </button>
-                    <button onclick="window.location.href='https://facebook.com/fonoster'" class="mdl-mini-footer--social-btn social-btn social-btn__facebook">
-                        <span class="visuallyhidden">facebook</span>
-                    </button>
-                    <button onclick="window.location.href='https://www.linkedin.com/company/fonoster'" class="mdl-mini-footer--social-btn social-btn social-btn__linkedin">
-                        <span class="visuallyhidden">google plus</span>
-                    </button>
+
+                <div class="mdl-mega-footer__bottom-section">
+                    <div class="mdl-logo">Title</div>
+                    <ul class="mdl-mega-footer__link-list">
+                        <li>Fonoster, Inc &copy; 2016</li>
+                        <li><a href="else.html#privacy">Privacy & Terms</a></li>
+                    </ul>
                 </div>
             </footer>
         </main>
