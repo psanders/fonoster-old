@@ -1,0 +1,193 @@
+
+<style>
+    .hero__fab.mdl-button--fab.mdl-button--colored,
+    .hero__fab.mdl-button--fab.mdl-button--colored:hover  {
+        background: #fff;
+    }
+
+    .try-us {
+        background-color: #27ae60;
+        color: #fff;
+        padding: 20px;
+        padding-bottom: 50px;
+        text-align: center;
+    }
+
+    .gray-text {
+        color: #333333;
+    }
+
+    .hero__fab {
+        top: calc(390px - 28px); /* container size minus button size*/
+        left: calc(100% - 80px);
+        position: absolute;
+    }
+
+    .mdl-typography--display-1 {
+        font-weight: 100;
+    }
+
+    .container {
+        background-color: #27ae60;
+        min-height: 390px;
+    }
+
+    .content {
+        max-width: 400px;
+        margin: auto;
+    }
+
+    /*.people-img {
+        max-width:100%;
+        max-height:100%;
+        min-height: 390px;
+    }*/
+
+    .people-img {
+        width: 100%;
+    }
+
+    .better-apps {
+        padding: 70px;
+        text-align: center;
+    }
+
+    img.domore {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .move-fast {
+        background-color: #ebeff2;
+        padding: 25px;
+    }
+
+    .do-more {
+        background-color: #fff;
+        padding: 25px;
+    }
+
+    img.console {
+        max-width: 100%;
+        height: auto;
+    }
+
+    @media screen and (min-width: 840px) {
+        .hero__fab {
+            top: calc(390px - 30px); /* container size minus button size*/
+            left: calc(50% - 30px);
+            position: absolute;
+        }
+    }
+
+    @media screen and (min-width: 1280px) {
+        .hero__fab {
+            top: calc(390px - 28px); /* container size minus button size*/
+            left: calc(50% - 30px);
+            position: absolute;
+        }
+    }
+
+    @media screen and (max-width: 1280px) {
+        .people-img {
+            width: auto;
+            height: 450px;
+        }
+    }
+
+    @media screen and (min-width: 1281px) {
+        .hero__fab {
+            visibility: hidden;
+        }
+    }
+
+    @media only screen and (min-width: 360px) and (max-width: 480px) {
+        .content {
+            padding: 10px;
+        }
+
+        .better-apps {
+            padding: 50px;
+        }
+
+        .move-fast {
+            padding: 0px;
+        }
+
+        .do-more {
+            padding: 0px;
+        }
+    }
+</style>
+
+<div class="mdl-grid mdl-grid--no-spacing container">
+    <div class="mdl-cell mdl-cell--middle mdl-cell--6-col mdl-cell--6-col mdl-cell--8-col-tablet mdl-color-text--white">
+
+        <div class="content">
+            <h2 class="mdl-typography--display-1">Easiest way to send interactive voice messages</h2>
+
+            <p>The tools and infrastructure you need to build better voice apps and grow successful businesses</p>
+
+            <a href="https://console.fonoster.com/#/signup" style="margin-top: 20px" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                Get your FREE API key
+            </a>
+        </div>
+    </div>
+    <div class="mdl-cell mdl-cell--6-col mdl-cell--hide-tablet mdl-cell--hide-phone" style="object-fit: cover;">
+        <img class="people-img" src="/assets/images/young-people.jpeg">
+    </div>
+
+    <!--<button class="hero__fab mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored mdl-button--fab mdl-shadow--4dp">
+        <i class="material-icons">keyboard_arrow_down</i>
+    </button>-->
+</div>
+
+<div class="better-apps">
+    <h2 class="mdl-typography--display-1 gray-text">Build Voice Applications in Minutes</h2>
+</div>
+
+<div class="move-fast">
+    <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--middle mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--6-col-desktop mdl-cell--1-offset-desktop mdl-cell--order-2-desktop">
+            <img class="console" src="/assets/images/console.png">
+        </div>
+        <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--4-col-desktop mdl-cell--1-offset-desktop">
+            <h2 class="mdl-typography--display-1 gray-text">Move fast</h2>
+
+            <p class="gray-text">Automated calls can be useful for telemarketing, shipping notification, reminders, emergency calls,
+                games, surveys and much more. Clients love to be informed, Fonoster helps you do exactly that</p>
+
+            <!--<a class="green" href="#">LEARN MORE</a>-->
+        </div>
+    </div>
+</div>
+
+
+<div class="do-more">
+    <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--6-col-desktop mdl-cell--1-offset-desktop">
+            <img class="domore" src="/assets/images/domore.png">
+        </div>
+        <div class="mdl-cell mdl-cell--middle mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--4-col-desktop mdl-cell--1-offset-desktop">
+            <h2 class="mdl-typography--display-1 gray-text">Do More</h2>
+
+            <p class="gray-text">Whether you want to send personalized messages to a single client or notify thousands,
+                Fonoster gives you the tools to communicate like never before.
+                With a simplified RESTful API, you will be up and running in minutes</p>
+
+            <!--<a class="green" href="#">LEARN MORE</a>-->
+        </div>
+    </div>
+</div>
+
+<div class="try-us">
+    <h2 class="mdl-typography--display-1">Try us out</h2>
+
+    <p>Start building for free</p>
+
+    <form class="ng-pristine ng-valid" name="loginform" action="https://console.fonoster.com">
+        <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" data-upgraded=",MaterialButton">
+            get started
+        </button>
+    </form>
+</div>
