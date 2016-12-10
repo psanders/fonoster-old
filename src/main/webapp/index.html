@@ -4,8 +4,8 @@
     <base href="/">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="ccrKSRBN9QdnLbhYLioJYZFBgJInYd7SnACUikLXYuY"/>
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Product+Sans:400&amp;lang=en-US" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700|Roboto:100,300,400,500" rel="stylesheet">
+
     <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.2.1/material.yellow-amber.min.css">
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
     <script src="https://fonoster.com/static/lib/bower_components/js-polyfills/polyfill.min.js"></script>
@@ -13,7 +13,7 @@
     <script src="https://fonoster.com/static/lib/bower_components/material-design-lite/material.min.js"></script>
     <script src="https://fonoster.com/static/lib/bower_components/angular/angular.min.js"></script>
     <script src="https://fonoster.com/static/lib/bower_components/angular-resource/angular-resource.min.js"></script>
-    <script src="/static/lib/bower_components/angular-route/angular-route.min.js"></script>
+    <script src="https://fonoster.com/static/lib/bower_components/angular-route/angular-route.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://fonoster.com/static/lib/bower_components/dialog-polyfill/dialog-polyfill.css">
     <link rel="icon" type="image/png" href="https://fonoster.com/assets/images/favicon.png" sizes="32x32">
@@ -59,30 +59,40 @@
             }
         }]);
 
-        angular.module('FIndex').config(['$routeProvider',
-            function($routeProvider) {
-        $routeProvider.
-        when('/index', {
-                    templateUrl: 'landingpage.tpl.html'
-        }).
-        when('/about', {
-                    templateUrl: 'about.tpl.html'
-        }).
-        when('/contact', {
-            templateUrl: 'contact.tpl.html'
-        }).
-         when('/terms', {
-            templateUrl: 'terms.tpl.html'
-        }).
-         when('/privacy', {
-            templateUrl: 'privacy.tpl.html'
-        }).
-        otherwise({
-            redirectTo: '/index'
+        angular.module('FIndex').config(['$routeProvider', '$locationProvider',
+            function($routeProvider, $locationProvider) {
+            $routeProvider.
+            when('/', {
+                        templateUrl: 'landingpage.tpl.html'
+            }).
+            when('/about', {
+                        templateUrl: 'about.tpl.html'
+            }).
+            when('/contact', {
+                templateUrl: 'contact.tpl.html'
+            }).
+             when('/terms', {
+                templateUrl: 'terms.tpl.html'
+            }).
+             when('/privacy', {
+                templateUrl: 'privacy.tpl.html'
+            }).
+            otherwise({
+                redirectTo: '/index'
             });
+
+            $locationProvider.html5Mode(true);
         }]);
     </script>
     <style>
+        body {
+            color: #848484;
+            font-family: 'Roboto',arial,sans-serif;
+            font-size: 90%;
+            font-weight: 300;
+            line-height: 20px;
+        }
+
         [ng-cloak] {
             display: none;
         }
@@ -103,13 +113,13 @@
         <header class="mdl-layout__header mdl-layout__header--waterfall mdl-layout__header--transparent">
             <div class="mdl-layout__header-row">
                 <span class="mdl-layout-title">
-                    <img class="logo" src="/static/assets/images/logo.png"/>
+                    <img class="logo" src="https://fonoster.com/static/assets/images/logo.png"/>
                 </span>
                 <div class="mdl-layout-spacer"></div>
 
                 <nav class="mdl-navigation mdl-cell--hide-tablet mdl-cell--hide-phone">
-                    <a href="https://console.fonoster.com" class="mdl-navigation__link mdl-js-button green">Go to Console</a>
-                    <a href="https://console.fonoster.com/#/signup" class="mdl-navigation__link mdl-js-button" style="background-color: rgb(255,235,59)">Get your FREE API key</a>
+                    <a href="https://console.fonoster.com" class="mdl-navigation__link mdl-js-button">Go to Console</a>
+                    <a href="https://console.fonoster.com/#/login?signup" class="mdl-navigation__link mdl-js-button" style="background-color: rgb(255,235,59)">Get your FREE API key</a>
                 </nav>
             </div>
 
@@ -128,7 +138,7 @@
         </header>
         <div class="mdl-layout__drawer ">
             <h1 class="logo logo-drawer" style="margin-left: 15px;">
-                <img class="logo" src="/static/assets/images/logo.png"/>
+                <img class="logo" src="https://fonoster.com/static/assets/images/logo.png"/>
             </h1>
             <nav class="mdl-navigation">
                 <a href="" class="mdl-navigation__link">Home</a>
@@ -156,9 +166,9 @@
                         <h1 class="mdl-mega-footer__heading">Company</h1>
                         <ul class="mdl-mega-footer__link-list">
                             <!--<li><a href="#">About</a></li>-->
-                            <li><a href="else.html#privacy">Privacy</a></li>
-                            <li><a href="else.html#terms">Terms</a></li>
-                            <li><a href="else.html#contact">Contact</a></li>
+                            <li><a href="/privacy">Privacy</a></li>
+                            <li><a href="/terms">Terms</a></li>
+                            <li><a href="/contact">Contact</a></li>
                         </ul>
                     </div>
 
@@ -185,7 +195,7 @@
                             <li><a href="https://twitter.com/fonoster">Twitter</a></li>
                             <li><a href="https://www.linkedin.com/company/fonoster">Linkedin</a></li>
                             <li><a href="https://github.com/fonoster">Github</a></li>
-                            <li><a href="https://github.com/fonoster">Join us on Slack</a></li>
+                            <li><a href="https://fonosterteam.typeform.com/to/CvQqk9">Join us on Slack</a></li>
                         </ul>
                     </div>
 
@@ -221,7 +231,7 @@
                     <div class="mdl-logo">Fonoster, Inc &copy; 2016</div>
                     <ul class="mdl-mega-footer__link-list">
 
-                        <li><a href="else.html#privacy">Privacy & Terms</a></li>
+                        <li><a href="/privacy">Privacy & Terms</a></li>
                     </ul>
                 </div>
             </footer>

@@ -1,5 +1,28 @@
-
 <style>
+    .section-title {
+        font-family: 'Roboto Slab', serif;
+        font-size: 38px;
+        font-weight: 300;
+        letter-spacing: -.2px;
+        line-height: 38px;
+        color: #444;
+    }
+
+    p.font-large {
+        font-family: 'Roboto', serif;
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 24px;
+        margin-bottom: 25px;
+    }
+
+    @media (min-width: 768px)
+        .font-large {
+        font-size: 18px;
+        line-height: 24px;
+        margin-bottom: 25px;
+    }
+
     .hero__fab.mdl-button--fab.mdl-button--colored,
     .hero__fab.mdl-button--fab.mdl-button--colored:hover  {
         background: #fff;
@@ -14,7 +37,7 @@
     }
 
     .gray-text {
-        color: #333333;
+        color: #444444;
     }
 
     .hero__fab {
@@ -37,12 +60,6 @@
         margin: auto;
     }
 
-    /*.people-img {
-        max-width:100%;
-        max-height:100%;
-        min-height: 390px;
-    }*/
-
     .people-img {
         width: 100%;
     }
@@ -50,11 +67,6 @@
     .better-apps {
         padding: 70px;
         text-align: center;
-    }
-
-    img.domore {
-        max-width: 100%;
-        height: auto;
     }
 
     .move-fast {
@@ -70,6 +82,17 @@
     img.console {
         max-width: 100%;
         height: auto;
+    }
+
+    img.domore {
+        max-width: 100%;
+        height: auto;
+    }
+
+    @media (min-width: 768px).font-large {
+        font-size: 18px;
+        line-height: 24px;
+        margin-bottom: 25px;
     }
 
     @media screen and (min-width: 840px) {
@@ -91,7 +114,7 @@
     @media screen and (max-width: 1280px) {
         .people-img {
             width: auto;
-            height: 450px;
+            height: 430px;
         }
     }
 
@@ -121,20 +144,32 @@
 </style>
 
 <div class="mdl-grid mdl-grid--no-spacing container">
-    <div class="mdl-cell mdl-cell--middle mdl-cell--6-col mdl-cell--6-col mdl-cell--8-col-tablet mdl-color-text--white">
+    <div class="mdl-cell mdl-cell--middle mdl-cell--6-col mdl-cell--6-col mdl-cell--8-col-tablet mdl-color-text--white ">
 
         <div class="content">
-            <h2 class="mdl-typography--display-1">Easiest way to send interactive voice messages</h2>
+            <h2 class="section-title mdl-color-text--white">Easiest way to send interactive voice messages.</h2>
 
-            <p>The tools and infrastructure you need to build better voice apps and grow successful businesses</p>
+            <p class="font-large">The tools and infrastructure you need to build better voice apps and grow successful businesses</p>
 
-            <a href="https://console.fonoster.com/#/signup" style="margin-top: 20px" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+            <a href="https://console.fonoster.com/#/login?signup" style="margin-top: 20px" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
                 Get your FREE API key
             </a>
         </div>
     </div>
-    <div class="mdl-cell mdl-cell--6-col mdl-cell--hide-tablet mdl-cell--hide-phone" style="object-fit: cover;">
-        <img class="people-img" src="/assets/images/young-people.jpeg">
+    <div class="mdl-cell mdl-cell--6-col mdl-cell--hide-tablet mdl-cell--hide-phone" style="object-fit: cover">
+        <picture>
+            <source class="people-img"
+                    media="(min-width: 480px)"
+                    srcset="/assets/images/people-at-work@1x.jpg 1px,
+                    /assets/images/people-at-work@2x.png 2x,
+                    /assets/images/people-at-work@4x.png 4x">
+            <img class="people-img"
+                    src="/assets/images/people-at-work@1x.jpg"
+                    srcset="/assets/images/people-at-work@1x.jpg 1px,
+                    /assets/images/people-at-work@2x.png 2x,
+                    /assets/images/people-at-work@4x.png 4x"
+                    alt="People at work">
+        </picture>
     </div>
 
     <!--<button class="hero__fab mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored mdl-button--fab mdl-shadow--4dp">
@@ -143,18 +178,18 @@
 </div>
 
 <div class="better-apps">
-    <h2 class="mdl-typography--display-1 gray-text">Build Voice Applications in Minutes</h2>
+    <h2 class="section-title">Build voice applications in minutes</h2>
 </div>
 
 <div class="move-fast">
     <div class="mdl-grid">
-        <div class="mdl-cell mdl-cell--middle mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--6-col-desktop mdl-cell--1-offset-desktop mdl-cell--order-2-desktop">
-            <img class="console" src="/assets/images/console.png">
+        <div class="mdl-cell mdl-cell--order-2-phone mdl-cell--order-2-tablet mdl-cell--middle mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--6-col-desktop mdl-cell--1-offset-desktop mdl-cell--order-2-desktop">
+            <img class="console" src="/assets/images/console@2x.png">
         </div>
-        <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--4-col-desktop mdl-cell--1-offset-desktop">
-            <h2 class="mdl-typography--display-1 gray-text">Move fast</h2>
+        <div class="mdl-cell mdl-cell--middle mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--4-col-desktop mdl-cell--1-offset-desktop">
+            <h2 class="section-title">Move fast</h2>
 
-            <p class="gray-text">Automated calls can be useful for telemarketing, shipping notification, reminders, emergency calls,
+            <p class="font-large gray-text">Automated calls can be useful for telemarketing, shipping notification, reminders, emergency calls,
                 games, surveys and much more. Clients love to be informed, Fonoster helps you do exactly that</p>
 
             <!--<a class="green" href="#">LEARN MORE</a>-->
@@ -165,13 +200,13 @@
 
 <div class="do-more">
     <div class="mdl-grid">
-        <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--6-col-desktop mdl-cell--1-offset-desktop">
+        <div class="mdl-cell mdl-cell--order-2-phone mdl-cell--order-2-tablet mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--6-col-desktop mdl-cell--1-offset-desktop">
             <img class="domore" src="/assets/images/domore.png">
         </div>
-        <div class="mdl-cell mdl-cell--middle mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--4-col-desktop mdl-cell--1-offset-desktop">
-            <h2 class="mdl-typography--display-1 gray-text">Do More</h2>
+        <div class="mdl-cell mdl-cell--order-1-phone mdl-cell--middle mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--4-col-desktop mdl-cell--1-offset-desktop">
+            <h2 class="section-title gray-text">Do More</h2>
 
-            <p class="gray-text">Whether you want to send personalized messages to a single client or notify thousands,
+            <p class="font-large gray-text">Whether you want to send personalized messages to a single client or notify thousands,
                 Fonoster gives you the tools to communicate like never before.
                 With a simplified RESTful API, you will be up and running in minutes</p>
 
@@ -181,9 +216,9 @@
 </div>
 
 <div class="try-us">
-    <h2 class="mdl-typography--display-1">Try us out</h2>
+    <h2 class="section-title mdl-color-text--white">Try us out</h2>
 
-    <p>Start building for free</p>
+    <p class="font-large">Start building for free</p>
 
     <form class="ng-pristine ng-valid" name="loginform" action="https://console.fonoster.com">
         <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" data-upgraded=",MaterialButton">
