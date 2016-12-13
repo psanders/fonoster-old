@@ -6,6 +6,7 @@
 
 	<display-name>Fonoster Secured Resources</display-name>
 
+	<!-- What is this for? -->
 	<security-constraint>
 		<web-resource-collection>
 			<web-resource-name>Viewpoint Secure URLs</web-resource-name>

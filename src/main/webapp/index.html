@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <base href="/">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="ccrKSRBN9QdnLbhYLioJYZFBgJInYd7SnACUikLXYuY"/>
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700|Roboto:100,300,400,500" rel="stylesheet">
-
+    <link rel="icon" type="image/png" href="https://fonoster.com/assets/images/favicon.png" sizes="32x32">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700|Roboto:100,300,400,500">
     <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.2.1/material.yellow-amber.min.css">
-    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
-    <script src="https://fonoster.com/static/lib/bower_components/js-polyfills/polyfill.min.js"></script>
-    <script src="https://fonoster.com/static/lib/bower_components/dialog-polyfill/dialog-polyfill.js"></script>
-    <script src="https://fonoster.com/static/lib/bower_components/material-design-lite/material.min.js"></script>
-    <script src="https://fonoster.com/static/lib/bower_components/angular/angular.min.js"></script>
-    <script src="https://fonoster.com/static/lib/bower_components/angular-resource/angular-resource.min.js"></script>
-    <script src="https://fonoster.com/static/lib/bower_components/angular-route/angular-route.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://fonoster.com/static/lib/bower_components/dialog-polyfill/dialog-polyfill.css">
-    <link rel="icon" type="image/png" href="https://fonoster.com/assets/images/favicon.png" sizes="32x32">
+
+    <script defer src="https://fonoster.com/static/lib/bower_components/js-polyfills/polyfill.min.js"></script>
+    <script defer src="https://fonoster.com/static/lib/bower_components/dialog-polyfill/dialog-polyfill.js"></script>
+    <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+    <script defer src="https://fonoster.com/static/lib/bower_components/jquery/jquery.min.js"></script>
+    <script src="https://fonoster.com/static/lib/bower_components/angular/angular.min.js"></script>
+    <script defer src="https://fonoster.com/static/lib/bower_components/angular-animate/angular-animate.min.js"></script>
+    <script defer src="https://fonoster.com/static/lib/bower_components/angular-resource/angular-resource.min.js"></script>
+    <script defer src="https://fonoster.com/static/lib/bower_components/angular-route/angular-route.min.js"></script>
+    <script defer src="https://fonoster.com/static/lib/bower_components/angular-base64/angular-base64.min.js"></script>
 
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -27,9 +29,19 @@
         ga('create', 'UA-71722942-1', 'auto');
         ga('send', 'pageview');
 
-        angular.module('FIndex', ['ngRoute']);
+        angular.module('FIndex', ['ngRoute', 'base64']);
 
-        angular.module('FIndex').controller('IndexCtrl', ['$scope', function ($scope) {
+        // MDL and Angular integration
+        angular.module('FIndex').run(function ($rootScope,$timeout) {
+            $rootScope.$on('$viewContentLoaded', ()=> {
+                $timeout(() => {
+                    componentHandler.upgradeAllRegistered();
+                })
+            })
+        });
+
+        angular.module('FIndex').controller('IndexCtrl', ['$scope', '$window', '$location', '$http', '$base64',
+            function ($scope, $window, $location, $http, $base64) {
             var self = this;
             var dialog = document.querySelector('dialog');
 
@@ -57,58 +69,141 @@
                     dialogPolyfill.registerDialog(dialog);
                 }
             }
+
+            self.goDown = function() {
+                var content = $('.mdl-layout__content');
+                content.stop().animate({ scrollTop: 430 }, "slow");
+            }
+
+            self.isHome = function() {
+                if ($location.path() === '/') return true;
+                return false;
+            }
+
+        }]);
+
+        // Horrible idea :s
+        angular.module('FIndex').controller('ContactCtrl', ['$scope', '$http', '$base64',
+            function ($scope, $http, $base64) {
+            var self = this;
+            $scope.sent = false;
+
+            $scope.contactTeam = function() {
+                var url = "https://api.mailgun.net/v3/fonoster.com/messages";
+                var dataJSON = {
+                    from: "postmaster@fonoster.com",
+                    to: "fonosterteam@fonoster.com",
+                    subject: "Sales contact?",
+                    text: JSON.stringify($scope.contactForm),
+                    multipart: true
+                }
+
+                var req = {
+                    method : 'POST',
+                    url: url,
+                    headers : {
+                        'content-type': 'application/x-www-form-urlencoded',
+                        'Authorization': 'Basic ' + $base64.encode('api:key-6b882d7dab7126118ac4456330a2dd75')
+                    },
+                    transformRequest: function(obj) {
+                        var str = [];
+                        for(var p in obj)
+                        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                        return str.join("&");
+                    },
+                    data: dataJSON
+                }
+                $http(req).then(function(data){
+                    console.log(data);
+                }, function(data){
+                    console.log(data);
+                })
+
+                $scope.sent = true;
+            }
         }]);
 
         angular.module('FIndex').config(['$routeProvider', '$locationProvider',
             function($routeProvider, $locationProvider) {
             $routeProvider.
-            when('/', {
-                        templateUrl: 'landingpage.tpl.html'
-            }).
-            when('/about', {
-                        templateUrl: 'about.tpl.html'
-            }).
-            when('/contact', {
-                templateUrl: 'contact.tpl.html'
-            }).
-             when('/terms', {
-                templateUrl: 'terms.tpl.html'
-            }).
-             when('/privacy', {
-                templateUrl: 'privacy.tpl.html'
-            }).
-            otherwise({
-                redirectTo: '/index'
-            });
+                when('/', {
+                    templateUrl: 'landingpage.tpl.html'
+                }).
+                when('/about', {
+                    templateUrl: 'about.tpl.html'
+                }).
+                when('/contact', {
+                    templateUrl: 'contact.tpl.html',
+                    controller: 'ContactCtrl'
+                }).
+                 when('/terms', {
+                    templateUrl: 'terms.tpl.html'
+                }).
+                 when('/privacy', {
+                    templateUrl: 'privacy.tpl.html'
+                }).
+                otherwise({
+                    redirectTo: '/'
+                });
 
             $locationProvider.html5Mode(true);
         }]);
     </script>
-    <style>
-        body {
-            color: #848484;
-            font-family: 'Roboto',arial,sans-serif;
-            font-size: 90%;
-            font-weight: 300;
-            line-height: 20px;
-        }
 
+    <style>
         [ng-cloak] {
             display: none;
-        }
-
-        .logo {
-            height: 35px;
         }
 
         .mdl-textfield__input {
             border-bottom: 1px solid gray;
         }
+
+        .mdl-textfield__label {
+            color: gray;
+        }
+
+        .hero__fab.mdl-button--fab.mdl-button--colored,
+        .hero__fab.mdl-button--fab.mdl-button--colored:hover  {
+            background: #fff;
+        }
+
+        .hero__fab {
+            top: calc(400px - 28px);
+            left: calc(100% - 80px);
+            position: absolute;
+        }
+
+        @media screen and (min-width: 840px) {
+            .hero__fab {
+                top: 400px;
+                left: calc(50% - 30px);
+                position: absolute;
+            }
+        }
+
+        .mdl-layout__header-row.second-menu {
+            border-style: solid;
+            border-color: #efefef;
+            border-width: 0;
+            border-top-width: 1px;
+            background-color: #fff
+        }
+
+        .logo-drawer {
+            margin-left: 15px;
+        }
+
+        .mdl-navigation__link.signup {
+            background-color: rgb(255,235,59);
+        }
     </style>
 
     <title>Fonoster - Communicate</title>
+    <base href="/">
 </head>
 <body ng-cloak ng-app="FIndex">
+
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--no-desktop-drawer-button" ng-controller="IndexCtrl as ctrl">
         <header class="mdl-layout__header mdl-layout__header--waterfall mdl-layout__header--transparent">
             <div class="mdl-layout__header-row">
@@ -119,25 +214,23 @@
 
                 <nav class="mdl-navigation mdl-cell--hide-tablet mdl-cell--hide-phone">
                     <a href="https://console.fonoster.com" class="mdl-navigation__link mdl-js-button">Go to Console</a>
-                    <a href="https://console.fonoster.com/#/login?signup" class="mdl-navigation__link mdl-js-button" style="background-color: rgb(255,235,59)">Get your FREE API key</a>
+                    <a href="https://console.fonoster.com/#/login?signup" class="mdl-navigation__link signup mdl-js-button">Get your FREE API key</a>
                 </nav>
             </div>
 
-            <!-- Bottom row, not visible on scroll -->
-            <div class="mdl-layout__header-row" style="border-style: solid; border-color: #efefef; border-width: 0; border-top-width: 1px; background-color: #fff">
-
+            <div class="mdl-layout__header-row second-menu">
                 <!-- Navigation -->
                 <nav class="mdl-navigation">
                     <a class="mdl-navigation__link" href="https://fonoster.com">Home</a>
                     <a ng-click="ctrl.pricing()" class="mdl-navigation__link" href="">Pricing</a>
                     <a class="mdl-navigation__link" href="https://blog.fonoster.com">Blog</a>
                     <a class="mdl-navigation__link" href="https://console.fonoster.com/#/login?playground">Demo</a>
-                    <a class="mdl-navigation__link" href="https://console.fonoster.com">Go to the Console</a>
+                    <a class="mdl-navigation__link" href="https://console.fonoster.com">Go to Console</a>
                 </nav>
             </div>
         </header>
         <div class="mdl-layout__drawer ">
-            <h1 class="logo logo-drawer" style="margin-left: 15px;">
+            <h1 class="logo-drawer">
                 <img class="logo" src="https://fonoster.com/static/assets/images/logo.png"/>
             </h1>
             <nav class="mdl-navigation">
@@ -153,88 +246,12 @@
 
             <div ng-view></div>
 
-            <style>
-                .mdl-textfield__label {
-                    color: gray;
-                }
-            </style>
-            <footer class="mdl-mega-footer">
-                <div class="mdl-mega-footer__middle-section">
+            <button ng-show="ctrl.isHome()" ng-click="ctrl.goDown()" class="hero__fab mdl-button mdl-js-button mdl-js-ripple-effect
+                    mdl-button--colored mdl-button--fab mdl-shadow--4dp">
+                <i class="material-icons">keyboard_arrow_down</i>
+            </button>
 
-                    <div class="mdl-mega-footer__drop-down-section">
-                        <input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
-                        <h1 class="mdl-mega-footer__heading">Company</h1>
-                        <ul class="mdl-mega-footer__link-list">
-                            <!--<li><a href="#">About</a></li>-->
-                            <li><a href="/privacy">Privacy</a></li>
-                            <li><a href="/terms">Terms</a></li>
-                            <li><a href="/contact">Contact</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="mdl-mega-footer__drop-down-section">
-                        <input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
-                        <h1 class="mdl-mega-footer__heading">Resources</h1>
-                        <ul class="mdl-mega-footer__link-list">
-                            <li><a href="https://blog.fonoster.com/2016/11/21/how-to-broadcast-a-voice-message-with-fonoster-voice-api/">Getting Started With Fonoster</a></li>
-                            <li><a href="https://fonoster.com/docs">Docs</a></li>
-                            <li><a href="https://github.com/fonoster/callflow-examples">Examples</a></li>
-                            <li><a href="" ng-click="ctrl.pricing();return">Pricing</a></li>
-                            <li><a href="https://console.fonoster.com/#/login?playground">Demo</a></li>
-                            <li><a href="https://console.fonoster.com">Console</a></li>
-                            <li><a href="https://github.com/fonoster">Helper Libraries</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="mdl-mega-footer__drop-down-section">
-                        <input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
-                        <h1 class="mdl-mega-footer__heading">Stay Connected</h1>
-                        <ul class="mdl-mega-footer__link-list">
-                            <li><a href="https://blog.fonoster.com">Blog</a></li>
-                            <li><a href="https://facebook.com/fonoster">Facebook</a></li>
-                            <li><a href="https://twitter.com/fonoster">Twitter</a></li>
-                            <li><a href="https://www.linkedin.com/company/fonoster">Linkedin</a></li>
-                            <li><a href="https://github.com/fonoster">Github</a></li>
-                            <li><a href="https://fonosterteam.typeform.com/to/CvQqk9">Join us on Slack</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="mdl-mega-footer__drop-down-section" >
-                        <h3 class="mdl-typography--display-1">Email Newsletter</h3>
-                        <p>Get updates, news, surveys & offers.</p>
-
-                        <style type="text/css">
-                            #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
-                            /* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
-                            We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
-                        </style>
-                        <form action="//fonoster.us14.list-manage.com/subscribe/post?u=128404d6884e0be58682f5a6d&amp;id=af0ff5bf29" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
-                            <div id="mc_embed_signup_scroll" class="mdl-textfield mdl-js-textfield">
-
-                                <!-- TODO: Add email patter -->
-                                <input type="text"  name="EMAIL" class="mdl-textfield__input" id="mce-EMAIL" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" maxlength="100">
-                                <label class="mdl-textfield__label" for="mce-EMAIL">Email address</label>
-                                <span class="mdl-textfield__error">Invalid Email</span>
-
-                                <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                                <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_128404d6884e0be58682f5a6d_af0ff5bf29" tabindex="-1" value=""></div>
-                            </div>
-                        </form>
-                        <button type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" form="mc-embedded-subscribe-form" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
-                            <i class="material-icons">send</i>
-                        </button>
-                    </div>
-
-                </div>
-
-                <div class="mdl-mega-footer__bottom-section">
-                    <div class="mdl-logo">Fonoster, Inc &copy; 2016</div>
-                    <ul class="mdl-mega-footer__link-list">
-
-                        <li><a href="/privacy">Privacy & Terms</a></li>
-                    </ul>
-                </div>
-            </footer>
+            <div ng-include="'footer.tpl.html'"></div>
         </main>
         <dialog class="mdl-dialog">
             <h4 class="mdl-dialog__title">{{ctrl.title}}</h4>

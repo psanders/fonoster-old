@@ -13,14 +13,6 @@
         font-size: 25px;
     }
 
-    .font-large {
-        font-family: 'Roboto', serif;
-        font-weight: 300;
-        font-size: 16px;
-        line-height: 24px;
-        margin-bottom: 25px;
-    }
-
     .hero {
         background-color: #27ae60;
         padding: 25px;
@@ -28,6 +20,7 @@
 
     .container {
         padding: 50px;
+        max-width: 500px;
     }
 
     @media only screen and (min-width: 360px) and (max-width: 480px) {
@@ -35,6 +28,8 @@
           padding: 5px;
         }
     }
+
+
 </style>
 
 <div class="hero">
@@ -45,11 +40,46 @@
     <div class="content">
         <h3 class="subtitle">Contact</h3>
 
-        <p class="font-large">
-            You can get in touch with the Fonoster team in multiple ways. We are on <a href="http://twitter.com/fonoster">Twitter</a>, <a href="http://facebook.com/fonoster">Facebook</a>.</p>
+        <p class="font-large">We have a dedicated team to help you with all of your questions, product, or implementations.
+            For current customers with technical inquiries, please contact our <a href="mailto: fonosterteam@fonoster.com">Support Team</a>.</p>
 
-        <p class="font-large">You are also able to send an email to fonosterteam[@]fonoster.com. We are exited to hear from you!.</p>
+        <form name="cForm" ng-hide="sent" novalidate ng-submit="cForm.$valid && contactTeam()">
+            <div class="mdl-textfield mdl-js-textfield">
+                <input class="mdl-textfield__input" ng-model="contactForm.name" type="text" id="name" autofocus required>
+                <label class="mdl-textfield__label" for="name">Name</label>
+                <span class="mdl-textfield__error">Name Required</span>
+            </div>
 
-        <p class="font-large">Fonoster, Inc &copy; 2016</p>
+            <div class="mdl-textfield mdl-js-textfield">
+                <input class="mdl-textfield__input" ng-model="contactForm.email" type="text" id="email" value="" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" maxlength="100" required>
+                <label class="mdl-textfield__label"  for="email">Email</label>
+                <span class="mdl-textfield__error">Enter Valid Email</span>
+            </div>
+
+            <div class="mdl-textfield mdl-js-textfield">
+                <input class="mdl-textfield__input" ng-model="contactForm.phone" type="text" id="phone" pattern="[0-9]*">
+                <label class="mdl-textfield__label" for="phone">Phone</label>
+                <span class="mdl-textfield__error">Digits only</span>
+            </div>
+
+            <div class="mdl-textfield mdl-js-textfield">
+                <input class="mdl-textfield__input" ng-model="contactForm.company" type="text" id="company">
+                <label class="mdl-textfield__label" for="company">Company</label>
+            </div>
+
+            <div class="mdl-textfield mdl-js-textfield">
+                <textarea class="mdl-textfield__input" ng-model="contactForm.subject" type="text" rows= "3" id="subject" required></textarea>
+                <label class="mdl-textfield__label" for="subject">Comment</label>
+                <span class="mdl-textfield__error">Must Include Comment</span>
+            </div>
+
+            <br/>
+
+            <button type="submit" class="mdl-button mdl-js-button mdl-button--raised">
+                Send
+            </button>
+        </form>
+
+        <p ng-show="sent">Thanks! We will contact you soon.</p>
     </div>
 </div>
