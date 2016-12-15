@@ -1,0 +1,94 @@
+<style>
+    .section-title {
+        font-family: 'Roboto Slab', serif;
+        font-size: 30px;
+        font-weight: 300;
+        letter-spacing: -.2px;
+        line-height: 38px;
+        color: #444;
+    }
+
+    .sub-title {
+        font-family: 'Roboto', serif;
+        font-size: 25px;
+    }
+
+    .font-large {
+        font-family: 'Roboto', serif;
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 24px;
+        margin-bottom: 25px;
+    }
+
+    .hero {
+        background-color: #27ae60;
+        padding: 25px;
+    }
+
+    .container {
+        padding: 20px;
+    }
+
+    @media only screen and (min-width: 360px) and (max-width: 480px) {
+        .container {
+            padding: 5px;
+        }
+    }
+
+    .selected_plan {
+        background-color: #5aaafa;
+        color: #fff;
+    }
+
+    .selected_plan:hover {
+        color: #444;
+    }
+
+    a.terms , a:hover.terms, a:visited.terms {
+        color: #5aaafa;
+    }
+
+    .pricing {
+        margin-bottom: 10px;
+    }
+
+    .mdl-data-table {
+        white-space: normal;
+    }
+</style>
+
+
+<div class="container">
+    <div class="content">
+        <h3 class="sub-title">Pricing Plans</h3>
+
+        <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp pricing">
+            <thead>
+                <tr>
+                    <th class="mdl-data-table__cell--non-numeric">Plan</th>
+                    <th class="mdl-data-table__cell--non-numeric">Feature</th>
+                    <th class="mdl-data-table__cell--non-numeric">Pricing</th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr class="selected_plan">
+                <td class="mdl-data-table__cell--non-numeric">Free</td>
+                <td class="mdl-data-table__cell--non-numeric"><span style="font-weight: 600">Fonoster Voice Free Plan</span> <br/>
+                    100 calls per day per Organization <br/>This plan is intended for development or experimentation only <br/>
+                    A 'watermark' will be placed at the beginning of call
+                </td>
+                <td class="mdl-data-table__cell--non-numeric">Free</td>
+            </tr>
+            <tr>
+                <td class="mdl-data-table__cell--non-numeric">Standard</td>
+                <td class="mdl-data-table__cell--non-numeric"><span style="font-weight: 600">Fonoster Voice standard pay per use plan</span> <br/>
+                    You will be charge per call</td>
+                <td class="mdl-data-table__cell--non-numeric">Pay per use</td>
+            </tr>
+            </tbody>
+        </table>
+        <a class="terms" href="/terms">Terms</a>
+    </div>
+
+</div>

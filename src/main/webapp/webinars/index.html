@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://fonoster.com/static/lib/bower_components/dialog-polyfill/dialog-polyfill.css">
     <link rel="stylesheet" href="/assets/css/main.css">
+
+
     <script defer src="https://fonoster.com/static/lib/bower_components/js-polyfills/polyfill.min.js"></script>
     <script defer src="https://fonoster.com/static/lib/bower_components/dialog-polyfill/dialog-polyfill.js"></script>
     <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
@@ -19,6 +21,9 @@
     <script defer src="https://fonoster.com/static/lib/bower_components/angular-route/angular-route.min.js"></script>
     <script defer src="https://fonoster.com/static/lib/bower_components/angular-base64/angular-base64.min.js"></script>
     <script defer src="../assets/lib/webinars.js"></script>
+    <script src="https://use.fontawesome.com/e0a4a920cd.js"></script>
+    <script src="http://momentjs.com/downloads/moment.min.js"></script>
+
 
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -79,10 +84,6 @@
             .logo {
                 margin-left: 15px;
             }
-
-            .webinar_form {
-                padding: 40px;
-            }
         }
 
         .speakers {
@@ -122,6 +123,15 @@
             font-size: 14px;
             font-weight: 500;
         }
+
+        .twitter-btn {
+            color: #1a8bf0;
+        }
+
+        .linkedin-btn {
+            color: #0077B5;
+            margin-right: 10px;
+        }
     </style>
 
     <title>Fonoster - Webinars</title>
@@ -129,21 +139,10 @@
 </head>
 <body ng-app="WebinarMod">
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--no-desktop-drawer-button" ng-controller="IndexCtrl as ctrl">
-        <div class="mdl-layout__drawer ">
-            <h1 class="logo-drawer">
-                <img class="logo" src="https://fonoster.com/static/assets/images/logo.png"/>
-            </h1>
-            <nav class="mdl-navigation">
-                <a href="" class="mdl-navigation__link">Home</a>
-                <a ng-click="ctrl.pricing()" class="mdl-navigation__link">Pricing</a>
-                <a href="https://fonoster.com/docs" class="mdl-navigation__link">Docs</a>
-                <a href="https://blog.fonoster.com" class="mdl-navigation__link">Blog</a>
-                <a href="https://console.fonoster.com/#/login?playground" class="mdl-navigation__link">Demo</a>
-                <a href="https://console.fonoster.com" class="mdl-navigation__link">Go to console</a>
-            </nav>
-        </div>
         <main class="mdl-layout__content container" >
-            <img class="logo" src="assets/images/logo-webinar.png"/>
+            <a href="https://fonoster.com">
+                <img class="logo" src="assets/images/logo-webinar.png"/>
+            </a>
             <div class="mdl-grid">
                 <div  class="mdl-cell mdl-cell--top mdl-cell--1-offset-desktop mdl-cell--5-col mdl-cell--8-col-tablet mdl-color-text--white">
                     <div ng-show="ctrl.error">
@@ -152,7 +151,7 @@
                     </div>
                     <div ng-hide="ctrl.error">
                         <h2 class="section_title">{{ctrl.webinar.title}}</h2>
-                        <h3 style="font-size: 14px; font-weight: 600">{{ctrl.webinar.date}}</h3>
+                        <h3 style="font-size: 14px; font-weight: 600">{{ctrl.webinar.dateFormated}}</h3>
 
                         <p ng-repeat="p in ctrl.webinar.paragraphs">{{p}}</p>
 
@@ -163,49 +162,8 @@
                         </ul>
                     </div>
                 </div>
-                <div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-cell--1-offset-desktop mdl-cell--top mdl-color-text--white webinar_form">
-                    <h4 ng-show="ctrl.sent">All done! We will send you periodic reminder for this webinar</h4>
-                    <h4 ng-hide="ctrl.sent">Register for the Webinar!</h4>
-                    <form ng-hide="ctrl.sent" name="cForm" ng-hide="sent" ng-submit="cForm.$valid && ctrl.signup(subscriber)" novalidate>
-                        <div class="mdl-textfield mdl-js-textfield">
-                            <input class="mdl-textfield__input" ng-model="subscriber.name" type="text" id="name" pattern=".{2,}" required>
-                            <label class="mdl-textfield__label" for="name">Name (required)</label>
-                            <span class="mdl-textfield__error">Name is required</span>
-                        </div>
-
-                        <div class="mdl-textfield mdl-js-textfield">
-                            <input class="mdl-textfield__input" ng-model="subscriber.email" type="text" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" maxlength="100" required>
-                            <label class="mdl-textfield__label"  for="email">Email (required)</label>
-                            <span class="mdl-textfield__error">Provide a valid email</span>
-                        </div>
-
-                        <div class="mdl-textfield mdl-js-textfield">
-                            <input class="mdl-textfield__input" ng-model="subscriber.company" type="text" id="company">
-                            <label class="mdl-textfield__label" for="company">Company</label>
-                        </div>
-
-                        <div class="mdl-textfield mdl-js-textfield">
-                            <input class="mdl-textfield__input" ng-model="subscriber.phone" type="text" id="phone" pattern="[0-9]*">
-                            <label class="mdl-textfield__label" for="phone">Phone Number</label>
-                            <span class="mdl-textfield__error">Digits only</span>
-                        </div>
-
-                        <div class="mdl-textfield mdl-js-textfield">
-                            <input class="mdl-textfield__input" ng-model="subscriber.jobTitle" type="text" id="title">
-                            <label class="mdl-textfield__label" for="title">Job title</label>
-                        </div>
-
-                        <div class="mdl-textfield mdl-js-textfield">
-                            <textarea class="mdl-textfield__input" ng-model="subscriber.comment" type="text" rows= "3" id="comment"></textarea>
-                            <label class="mdl-textfield__label" for="comment">Why does this webinar topic interest you?</label>
-                        </div>
-
-                        <br/>
-
-                        <button type="submit" class="mdl-button signup mdl-js-button mdl-button--raised mdl-button--colored">
-                            REGISTER NOW
-                        </button>
-                    </form>
+                <div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-cell--1-offset-desktop mdl-cell--top mdl-color-text--white">
+                    <div ng-include="'webinars/chimp_form.tpl.html'"></div>
                 </div>
             </div>
 
@@ -221,7 +179,8 @@
                             <p class="speaker_name"><b>{{speaker.name}}</b><br/>{{speaker.title}}</p>
                         </div>
                         <div class="mdl-card__actions mdl-card--border">
-                            <a href="{{speaker.twitter}}">Twitter</a> | <a href="{{speaker.linkedin}}">Linkedin</a>
+                            <a class="linkedin-btn" href="{{speaker.linkedin}}"><i class="fa fa-linkedin-square fa-3x" aria-hidden="true"></i></a>
+                            <a class="twitter-btn" href="{{speaker.twitter}}"><i class="fa fa-twitter-square fa-3x" aria-hidden="true"></i></a>
                         </div>
                     </div>
                 </div>

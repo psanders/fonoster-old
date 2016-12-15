@@ -29,7 +29,9 @@
         }
     }
 
-
+    a.support , a:hover.support, a:visited.support {
+        color: #5aaafa;
+    }
 </style>
 
 <div class="hero">
@@ -41,7 +43,7 @@
         <h3 class="subtitle">Contact</h3>
 
         <p class="font-large">We have a dedicated team to help you with all of your questions, product, or implementations.
-            For current customers with technical inquiries, please contact our <a href="mailto: fonosterteam@fonoster.com">Support Team</a>.</p>
+            For current customers with technical inquiries, please contact our <a class="support" href="mailto: fonosterteam@fonoster.com">Support Team</a>.</p>
 
         <form name="cForm" ng-hide="sent" novalidate ng-submit="cForm.$valid && contactTeam()">
             <div class="mdl-textfield mdl-js-textfield">
