@@ -8,8 +8,10 @@
     <Set name="contextPath">/</Set>
     <Set name="virtualHosts">
         <Array type="java.lang.String">
+            <Item>localhost</Item>
+            <Item>127.0.0.1</Item>
             <Item>fonoster.com</Item>
-            <Item>www.fonoster.com</Item> <!-- No yet tested -->
+            <Item>www.fonoster.com</Item>
         </Array>
     </Set>
 </Configure>
