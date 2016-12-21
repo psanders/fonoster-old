@@ -40,11 +40,10 @@
 						<descriptor>${project.basedir}/src/main/resources/web.xml</descriptor>
 					</webApp>
 					<scanIntervalSeconds>5</scanIntervalSeconds>
-					<!-- Todo: Find a way to make this module independent of module resources-->
 					<contextHandlers>
 						<contextHandler implementation="org.eclipse.jetty.maven.plugin.JettyWebAppContext">
-							<contextPath>/static</contextPath>
-							<resourceBase>${project.basedir}/src/main/resources/META-INF/resources</resourceBase>
+							<contextPath>/docs</contextPath>
+							<resourceBase>${project.basedir}/docs/build</resourceBase>
 						</contextHandler>
 					</contextHandlers>
 				</configuration>

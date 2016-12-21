@@ -8,13 +8,13 @@
     <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.2.1/material.yellow-amber.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="/assets/css/main.css">
-    <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
-    <script defer src="https://fonoster.com/static/lib/bower_components/jquery/jquery.min.js"></script>
-    <script src="https://fonoster.com/static/lib/bower_components/angular/angular.min.js"></script>
-    <script defer src="https://fonoster.com/static/lib/bower_components/angular-animate/angular-animate.min.js"></script>
-    <script defer src="https://fonoster.com/static/lib/bower_components/angular-resource/angular-resource.min.js"></script>
-    <script defer src="https://fonoster.com/static/lib/bower_components/angular-route/angular-route.min.js"></script>
-    <script defer src="https://fonoster.com/static/lib/bower_components/angular-base64/angular-base64.min.js"></script>
+    <script defer src="assets/lib/bower_components/material-design-lite/material.min.js"></script>
+    <script defer src="assets/lib/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="assets/lib/bower_components/angular/angular.min.js"></script>
+    <script defer src="assets/lib/bower_components/angular-animate/angular-animate.min.js"></script>
+    <script defer src="assets/lib/bower_components/angular-resource/angular-resource.min.js"></script>
+    <script defer src="assets/lib/bower_components/angular-route/angular-route.min.js"></script>
+    <script defer src="assets/lib/bower_components/angular-base64/angular-base64.min.js"></script>
     <script src="assets/lib/index.js"></script>
 
     <script>
@@ -30,6 +30,19 @@
     <style>
         [ng-cloak] {
             display: none;
+        }
+
+        body, html {
+            background-color: #F5F5F5;
+        }
+
+        .mdl-layout__header-row {
+            background-color: #fff;
+        }
+
+        .mdl-layout {
+            max-width: 1366px;
+            margin: 0 auto;
         }
 
         .mdl-textfield__input {
@@ -82,10 +95,10 @@
 <body ng-cloak ng-app="FIndex">
 
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--no-desktop-drawer-button" ng-controller="IndexCtrl as ctrl">
-        <header class="mdl-layout__header mdl-layout__header--waterfall mdl-layout__header--transparent">
+        <header class="mdl-layout__header mdl-layout__header--waterfall mdl-layout__header--transparent mdl-layout--no-desktop-drawer-button">
             <div class="mdl-layout__header-row">
                 <span class="mdl-layout-title">
-                    <img class="logo" src="https://fonoster.com/static/assets/images/logo.png"/>
+                    <img class="logo" src="assets/images/logo.png"/>
                 </span>
                 <div class="mdl-layout-spacer"></div>
 
@@ -94,27 +107,26 @@
                     <a href="https://console.fonoster.com/#/login?signup" class="mdl-navigation__link signup mdl-js-button">Get your FREE API key</a>
                 </nav>
             </div>
-
-            <div class="mdl-layout__header-row second-menu">
+            <div class="mdl-layout__header-row second-menu mdl-layout--large-screen-only">
                 <!-- Navigation -->
                 <nav class="mdl-navigation">
                     <a class="mdl-navigation__link" href="/">Home</a>
                     <a href="/pricing" class="mdl-navigation__link" href="">Pricing</a>
-                    <a href="https://fonoster.com/docs" class="mdl-navigation__link" href="">Docs</a>
+                    <a href="/docs" target="_blank" class="mdl-navigation__link" href="">Docs</a>
                     <a class="mdl-navigation__link" href="https://blog.fonoster.com">Blog</a>
                     <a class="mdl-navigation__link" href="https://console.fonoster.com/#/login?playground">Demo</a>
                     <a class="mdl-navigation__link" href="https://console.fonoster.com">Go to Console</a>
                 </nav>
             </div>
         </header>
-        <div class="mdl-layout__drawer ">
+        <div class="mdl-layout__drawer">
             <h1 class="logo-drawer">
-                <img class="logo" src="https://fonoster.com/static/assets/images/logo.png"/>
+                <img class="logo" src="assets/images/logo.png"/>
             </h1>
             <nav class="mdl-navigation">
                 <a href="/" class="mdl-navigation__link">Home</a>
                 <a href="/pricing" class="mdl-navigation__link">Pricing</a>
-                <a href="https://fonoster.com/docs" class="mdl-navigation__link">Docs</a>
+                <a href="/docs" target="_blank" class="mdl-navigation__link">Docs</a>
                 <a href="https://blog.fonoster.com" class="mdl-navigation__link">Blog</a>
                 <a href="https://console.fonoster.com/#/login?playground" class="mdl-navigation__link">Demo</a>
                 <a href="https://console.fonoster.com" class="mdl-navigation__link">Go to console</a>
@@ -132,5 +144,6 @@
             <div ng-include="'footer.tpl.html'"></div>
         </main>
     </div>
+    <script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/signup-forms/popup/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script><script type="text/javascript">require(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us14.list-manage.com","uuid":"128404d6884e0be58682f5a6d","lid":"af0ff5bf29"}) })</script>
 </body>
 </html>
