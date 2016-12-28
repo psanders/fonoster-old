@@ -1,4 +1,5 @@
 angular.module('WebinarMod', ['ngRoute', 'base64']);
+angular.module('AdMod', ['ngRoute', 'base64']);
 
 angular.module('WebinarMod').config(['$locationProvider',
     function($locationProvider) {
@@ -37,4 +38,3 @@ angular.module('WebinarMod').controller('IndexCtrl', ['$scope', '$http', '$locat
         self.error = true;
     });
 }]);
-

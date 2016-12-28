@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="theme-color" content="#27ae60">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="ccrKSRBN9QdnLbhYLioJYZFBgJInYd7SnACUikLXYuY"/>
+    <link rel="icon" type="image/png" href="https://fonoster.com/assets/images/favicon.png" sizes="32x32">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700|Roboto:100,300,400,500">
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.2.1/material.yellow-amber.min.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <script defer src="../assets/lib/bower_components/material-design-lite/material.min.js"></script>
+    <script src="../assets/lib/bower_components/angular/angular.min.js"></script>
+    <script defer src="../assets/lib/bower_components/angular-animate/angular-animate.min.js"></script>
+    <script defer src="../assets/lib/bower_components/angular-resource/angular-resource.min.js"></script>
+    <script defer src="../assets/lib/bower_components/angular-route/angular-route.min.js"></script>
+    <script defer src="../assets/lib/bower_components/angular-base64/angular-base64.min.js"></script>
+
+    <script defer src="../assets/lib/webinars.js"></script>
+    <script src="https://use.fontawesome.com/e0a4a920cd.js"></script>
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-71722942-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+    <style>
+        html, body, .mdl-layout__content  {
+            height: 100%;
+            display: flex;
+        }
+
+        main {
+            background-color: #333;
+        }
+
+        aside {
+            overflow-y: auto;
+            background-color: #fff;
+        }
+
+        .aside_content {
+            padding:20px;
+            margin-bottom: 40px;
+        }
+
+        bside {
+            background-image: url("/assets/images/b36.png");
+            padding: 40px;
+        }
+
+        h1, h2 {
+            font-weight: 400;
+        }
+
+        p, ul {
+            font-size: 1.4em;
+            font-spacing: 5px;
+            font-weight: 300;
+        }
+
+        [ng-cloak] {
+            display: none;
+        }
+
+        .section_title {
+            font-family: 'Roboto Slab', serif;
+            font-weight: 300;
+            letter-spacing: -.2px;
+            line-height: 38px;
+            font-size: 35px;
+            text-transform: none;
+        }
+
+        .mdl-mini-footer, .mdl-mini-footer ul, .mdl-logo {
+            font-family: 'Roboto', serif;
+            font-size: 1.0em;
+            font-weight: 300;
+            background-color: #333;
+        }
+
+        .logo {
+            height: 45px;
+        }
+
+        .featureList, .featureList ul {
+            margin-left: -1.5em;
+            margin-top: 0;
+            list-style-type: none;
+        }
+
+        .featureList li:before {
+            margin-left: -2em;
+            font-weight: bold;
+        }
+
+        .featureList li.tick:before {
+            content: "\2713";
+            color: #27ae60;
+            margin: 10px;
+        }
+
+        @media only screen and (min-width: 360px) and (max-width: 720px) {
+            p, ul {
+                font-size: 1.3em;
+                font-spacing: 1.5em;
+            }
+
+            .section_title {
+                font-size: 2.5em;
+            }
+
+            bside {
+                padding: 20px;
+            }
+
+            .aside_content {
+                padding: 20px;
+            }
+
+            .button {
+                width: 100%;
+            }
+        }
+
+        .social-btn {
+            color: #ecf0f1;
+        }
+    </style>
+
+    <title>Herramienta de cobros</title>
+    <base href="/">
+</head>
+<body ng-app="AdMod">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--no-desktop-drawer-button" >
+        <main class="mdl-layout__content container mdl-color-text--white">
+            <div class="mdl-grid mdl-grid--no-spacing" >
+                <aside class="mdl-cell mdl-cell--8-col mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-color-text--black">
+                    <div class="aside_content">
+                        <a href="https://fonoster.com">
+                            <img class="logo" src="assets/images/logo.png"/>
+                        </a>
+                        <img style="margin-top: 20px; width: 100%" src="assets/images/test.png"/>
+                        <h2 class="section_title">Mensajes de voz como herramienta de cobros</h2>
+
+                        <p>Los mensajes voz pregrabados desempeñan un papel importante en la estrategia de colecta de
+                            deudas de lo equipos de cobros modernos. Un recordatorio de pago, entregado con un mensaje
+                            personalizado hará una enorme diferencia en especial si usted tiene cientos o miles de usuarios.
+
+                        <p>Pensando en su necesidad de cobros hemos desarrollado la mejor plataforma
+                        de mensajes de voz masivos.</p>
+
+                        <p>Algunos de los beneficios de nuestra plataforma:</p>
+
+                        <ul class="featureList">
+                            <li class="tick">El mensaje es recibido aun cuando la persona no esté en casa u oficina</li>
+                            <li class="tick">Reduce personal y minimiza costos</li>
+                            <li class="tick">Se pueden enviar mensajes personalizados a miles de usuarios</li>
+                            <li class="tick">Funcionan como recordatorios de fecha de pago o monto pendiente</li>
+                        </ul>
+                    </div>
+
+                    <footer class="mdl-mini-footer mdl-cell--hide-phone mdl-cell--hide-tablet">
+                        <div class="mdl-mini-footer__left-section">
+                            <div class="mdl-logo">Fononster, Inc &copy 2016</div>
+                            <ul class="mdl-mini-footer__link-list">
+                                <li><a href="/">Página Principal</a></li>
+                                <li><a href="http://blog.fonoster.com">Blog</a></li>
+                            </ul>
+                        </div>
+                        <div class="mdl-layout-spacer"></div>
+                        <div class="mdl-mini-footer__left-section">
+                            <a class="social-btn" href="https://www.twitter.com/fonoster"><i class="fa fa-twitter-square fa-3x" aria-hidden="true"></i></a>
+                            <a class="social-btn" href="https://www.facebook.com/fonoster"><i class="fa fa-facebook-square fa-3x" aria-hidden="true"></i></a>
+                            <a class="social-btn" href="https://www.linkedin.com/company/fonoster"><i class="fa fa-linkedin-square fa-3x" aria-hidden="true"></i></a>
+                        </div>
+                    </footer>
+                </aside>
+
+                <bside class="mdl-cell mdl-cell--4-col mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-color-text--white">
+                    <div ng-include="'ads/chimp_form.tpl.html'"></div>
+                </bside>
+
+                <footer class="mdl-mini-footer mdl-cell--hide-desktop mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet">
+                    <div class="mdl-mini-footer__left-section">
+                        <div class="mdl-logo">Fononster, Inc &copy 2016</div>
+                        <ul class="mdl-mini-footer__link-list">
+                            <li><a href="/">Página Principal</a></li>
+                            <li><a href="http://blog.fonoster.com">Blog</a></li>
+                        </ul>
+                    </div>
+                    <div class="mdl-layout-spacer"></div>
+                    <div class="mdl-mini-footer__left-section">
+                        <a class="social-btn" href="https://www.twitter.com/fonoster"><i class="fa fa-twitter-square fa-3x" aria-hidden="true"></i></a>
+                        <a class="social-btn" href="https://www.facebook.com/fonoster"><i class="fa fa-facebook-square fa-3x" aria-hidden="true"></i></a>
+                        <a class="social-btn" href="https://www.linkedin.com/company/fonoster"><i class="fa fa-linkedin-square fa-3x" aria-hidden="true"></i></a>
+                    </div>
+                </footer>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
