@@ -148,7 +148,8 @@
                     </div>
                     <div ng-hide="ctrl.error">
                         <h2 class="section_title">{{ctrl.webinar.title}}</h2>
-                        <h3 style="font-size: 14px; font-weight: 600">{{ctrl.webinar.dateFormated}}</h3>
+                        <h3 ng-hide="ctrl.isCompleted(ctrl.webinar.date)" style="font-size: 14px; font-weight: 600">{{ctrl.webinar.dateFormated}}</h3>
+                        <h3 ng-show="ctrl.isCompleted(ctrl.webinar.date)" style="font-size: 14px; font-weight: 600">Watch on Demand</h3>
 
                         <p ng-repeat="p in ctrl.webinar.paragraphs">{{p}}</p>
 

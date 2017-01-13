@@ -15,8 +15,8 @@ angular.module('WebinarMod').run(function ($rootScope, $timeout) {
     })
 });
 
-angular.module('WebinarMod').controller('IndexCtrl', ['$scope', '$http', '$location', '$base64',
-    function ($scope, $http, $location, $base64) {
+angular.module('WebinarMod').controller('IndexCtrl', ['$scope', '$http', '$location', '$base64', '$sce',
+    function ($scope, $http, $location, $base64, $sce) {
     var self = this;
     self.error = false;
     self.sent = false;
@@ -33,8 +33,20 @@ angular.module('WebinarMod').controller('IndexCtrl', ['$scope', '$http', '$locat
     }).then(function successCallback(response) {
         self.webinar = response.data;
         self.webinar.dateFormated =  moment(self.webinar.date, 'YYYYMMDDHHmm').local().format("LLL");
+        self.webinar.action = $sce.trustAsResourceUrl('//fonoster.us14.list-manage.com/subscribe/post?u=128404d6884e0be58682f5a6d&id=7ad6d81be6');
     }, function errorCallback(response) {
         console.log("Something went wrong:");
         self.error = true;
     });
+
+    self.isCompleted = function(d) {
+        var date = moment(d, 'YYYYMMDDHHmm');
+        var now = moment();
+
+        if (now > date) {
+           return true;
+        } else {
+           return false;
+        }
+    }
 }]);
