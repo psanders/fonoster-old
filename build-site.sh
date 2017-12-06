@@ -5,9 +5,6 @@ timestamp() {
 }
 
 # Get last docs from repo
-cd docs
-git checkout
-cd ..
 git submodule init
 git submodule update
 
