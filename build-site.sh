@@ -16,5 +16,5 @@ docker build -t slate .
 docker run -it -v $(pwd):/app slate
 cd ..
 
-docker build -t gcr.io/fonoster-app/fnsite:latest .
-docker build -t gcr.io/fonoster-app/fnsite:1.0.$(timestamp) .
+docker build -t gcr.io/fonoster-app/website:latest .
+docker build -t gcr.io/fonoster-app/website:1.0.$(timestamp) .

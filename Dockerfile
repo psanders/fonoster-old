@@ -1,6 +1,11 @@
-FROM gcr.io/fonoster-app/fnjetty:latest
+FROM jetty:alpine
 MAINTAINER Pedro Sanders <fonosterteam@fonoster.com>
 
-ADD target/site.war             /opt/app-base/webapps
-ADD src/main/resources/site.xml /opt/app-base/webapps
-ADD docs/build/                 /opt/app-base/webapps/docs
+COPY keystore                    $JETTY_BASE/etc/keystore
+COPY start.ini                   $JETTY_BASE/start.ini
+COPY target/site.war             $JETTY_BASE/webapps
+COPY src/main/resources/site.xml $JETTY_BASE/webapps
+COPY docs/build/                 $JETTY_BASE/webapps/docs
+
+EXPOSE 8080
+EXPOSE 8443
