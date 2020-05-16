@@ -1,7 +1,0 @@
-
-public class SipIOLauncher {
-    static public void main(String... args) throws javax.script.ScriptException, java.io.FileNotFoundException{
-        javax.script.ScriptEngine engine = new javax.script.ScriptEngineManager().getEngineByName("nashorn");
-        engine.eval(new java.io.FileReader("sipio"));
-    }
-}

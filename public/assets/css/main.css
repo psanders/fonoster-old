@@ -20,3 +20,11 @@ body,html {
     line-height: 24px;
     margin-bottom: 25px;
 }
+
+.section-title {
+    font-size: 44px;
+}
+
+.people-img {
+    width: 200px;
+}
